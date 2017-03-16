@@ -1,45 +1,55 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <title>CA2</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </html>
 <body>
+    <div class="container">
+        <div id="app">
+            <p>Persons</p>
+            <table class="table table-bordered table-sm">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Id</th>
+                        <th>Email</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="persons" class=" table-striped">
 
-    <div id="app">
-        <p>Persons</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>email</th>
-                    <th>first name</th>
-                    <th>last name</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="persons">
+                </tbody>
+            </table>
+        </div>
+        <hr/>
+        <div id="tasklist">
+            <p>CA2 Front Task List (✓ instead of X in completed ones)</p>
+            <ul class="list-group" x-checkmark="✓">
+                <li class="list-group-item">[X] Get all persons with a given hobby</li>
+                <li class="list-group-item">[X] Get all persons living in a given city</li>
+                <li class="list-group-item">[X] Get count of people with a given hobby</li>
+                <li class="list-group-item">[X] Get a list of all zip codes in denmark</li>
+                <li class="list-group-item">[X] Get a list of companies with more than xx employees</li>
+                <li class="list-group-item">[X] [C]reate/[R]ead/[U]pdate/[D]elete person</li>
+            </ul>
+        </div>
 
-            </tbody>
-        </table>
+        <div id="crawl" style="display: none;">
+            <div id="authors">Jamie Egeberg, Niki Wix Skaarup</div>
+            <div id="class">A</div>
+            <div id="group">3</div>
+        </div>
     </div>
-    <hr/>
-    <div id="tasklist">
-        <p>CA2 Front Task List</p>
-        <ul style="margin:0; list-style: none; padding: 0;" x-checkmark="✓">
-            <li>[X] Get all persons with a given hobby</li>
-            <li>[X] Get all persons living in a given city</li>
-            <li>[X] Get count of people with a given hobby</li>
-            <li>[X] Get a list of all zip codes in denmark</li>
-            <li>[X] Get a list of companies with more than xx employees</li>
-            <li>[X] [C]reate/[R]ead/[U]pdate/[D]elete person</li>
-        </ul>
-    </div>
-
-    <div id="crawl" style="display: none;">
-        <div id="authors">Jamie Egeberg, Niki Wix Skaarup</div>
-        <div id="class">A</div>
-        <div id="group">3</div>
-    </div>
-
+    
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/script.js"></script>
 </body>
