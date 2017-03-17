@@ -57,9 +57,9 @@ function updateTable() {
 function refreshHandler() {
     console.log("refreshHandler on url: " + url("person"));
 
-    var promise = fetch(url("person"), getConf);
-
     var status = false;
+    var promise = fetch(url("person/contactinfo"), getConf);
+
     promise.then(function (response) {
         status = response.ok;
         return response.json();
@@ -75,16 +75,16 @@ function refreshHandler() {
 refresh.addEventListener('click', refreshHandler);
 
 function delHandler(evt) {
-    var delbody = parseInt(evt.target.value);
-    var delpromise = fetch(url("person") + "/" + delbody, deleteConf);
+    var id = parseInt(evt.target.value);
+    var delpromise = fetch(url("person") + "/" + id, deleteConf);
     delpromise.then(function (response) {
         return response.ok;
     }).then(function (status) {
         if (status) {
-            //Display error message and break.... alert("FEJL!!!");
-        } else {
             removePerson(id);
             updateTable();
+        } else {
+            //Display error message and break.... alert("FEJL!!!");
         }
     });
 }
