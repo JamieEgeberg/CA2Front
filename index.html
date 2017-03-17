@@ -14,33 +14,17 @@
 
 <body>
     <div class="container">
-        <a href="documentation.html"><h3>Documentation</h3></a>
+        <a href="documentation.html">
+            <h3>Documentation</h3>
+        </a>
     </div>
     <div class="container">
-        <div id="app">
-            <h3>Persons</h3>
-            <table class="table table-bordered table-striped table-sm">
-                <thead class="thead-inverse">
-                    <tr>
-                        <th>Id</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th width="110">
-                            <div class="btn-group">
-                                <button id="add" type="button" 
-                                class="btn btn-primary btn-sm">+</button>
-                                <button id="refresh" type="button" 
-                                class="btn btn-info btn-sm" 
-                                x-unicode="&#8635;">↻</button>
-                            </div>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id="tbody">
-
-                </tbody>
-            </table>
+        <div>
+            <p>Project front end</p>
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action" href="personFront.html">Person</a>
+                <a class="list-group-item list-group-item-action" href="CompanyFront.html">Company</a>
+            </div>
         </div>
         <hr/>
         <div id="tasklist">
@@ -54,6 +38,7 @@
                 <li class="list-group-item">[✓] [C]reate/[R]ead/[U]pdate/[D]elete person</li>
             </ul>
         </div>
+        <textarea name="" id="" rows="10" style="resize:vertical" ;></textarea>
 
         <div id="crawl" style="display: none;">
             <div id="authors">Jamie Egeberg, Niki Wix Skaarup</div>
@@ -74,23 +59,23 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" id="id" name="id" value="0"/>
+                    <input type="hidden" id="id" name="id" value="0" />
                     <div class="form-group row">
                         <label for="firstName" class="col-3 col-form-label">First Name</label>
                         <div class="col-9">
-                            <input class="form-control" type="text" id="firstName" placeholder="First Name"/>
+                            <input class="form-control" type="text" id="firstName" placeholder="First Name" />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="lastName" class="col-3 col-form-label">Last Name</label>
                         <div class="col-9">
-                            <input class="form-control" type="text" id="lastName" placeholder="Last Name"/>
+                            <input class="form-control" type="text" id="lastName" placeholder="Last Name" />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-3 col-form-label">Email</label>
                         <div class="col-9">
-                            <input class="form-control" type="email" id="email" placeholder="email@example.com"/>
+                            <input class="form-control" type="email" id="email" placeholder="email@example.com" />
                         </div>
                     </div>
                 </div>

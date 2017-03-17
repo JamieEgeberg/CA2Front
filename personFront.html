@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CA2</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="app">
+            <h3>Persons</h3>
+            <table class="table table-bordered table-striped table-sm">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th width="110">
+                            <div class="btn-group">
+                                <button id="add" type="button" class="btn btn-primary btn-sm">+</button>
+                                <button id="refresh" type="button" class="btn btn-info btn-sm" x-unicode="&#8635;">↻</button>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+        <hr/>
+
+        <div class="modal fade" id="person-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="person-modal-title" class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="id" name="id" value="0" />
+                        <div class="form-group row">
+                            <label for="firstName" class="col-3 col-form-label">First Name</label>
+                            <div class="col-9">
+                                <input class="form-control" type="text" id="firstName" placeholder="First Name" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lastName" class="col-3 col-form-label">Last Name</label>
+                            <div class="col-9">
+                                <input class="form-control" type="text" id="lastName" placeholder="Last Name" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-3 col-form-label">Email</label>
+                            <div class="col-9">
+                                <input class="form-control" type="email" id="email" placeholder="email@example.com" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="save">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- jQuery first, then Tether, then Bootstrap JS. -->
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+            crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/personScript.js"></script>
+</body>
+
+</html>
