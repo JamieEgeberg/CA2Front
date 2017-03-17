@@ -4,19 +4,22 @@ var domain = "http://localhost";
 var basePath = "/api";
 var debug = true;
 
+// url that can vary
 function url(path) {
     if (!path.startsWith("/"))
         path = "/" + path;
     return domain + ":" + port + basePath + path;
 }
 
+// not used
 var corsHeaders = {
-'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Credentials': 'true',
     'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers',
     'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT'
 }
 
+// headers used
 var myHeaders = {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
@@ -27,26 +30,29 @@ var postConf = { method: 'POST', headers: myHeaders, mode: "cors" };
 var putConf = { method: 'PUT', headers: myHeaders, mode: "cors" };
 var deleteConf = { method: 'DELETE', headers: myHeaders, mode: "cors" };
 
-var tbody = document.getElementById("tbody");
+var tbody = document.getElementById("tbody"); // table body
+// Input fields not actually inside a form just simplifies it by grouping them.
 var personForm = {
     id: document.getElementById("id"),
     firstName: document.getElementById("firstName"),
     lastName: document.getElementById("lastName"),
     email: document.getElementById("email")
 }
-var personModal = document.getElementById("person-modal");
+var personModal = $("#person-modal"); // JQuery required for Bootstrap modals
 var personModalTitle = document.getElementById("person-modal-title");
-var save = document.getElementById("save");
-var add = document.getElementById("add");
-var refresh = document.getElementById("refresh");
+var save = document.getElementById("save"); // Save Changes button
+var add = document.getElementById("add"); // '+' button
+var refresh = document.getElementById("refresh"); // '↻' button
 
+// have a placeholding person which is overridden
 var persons = [{
-    id: 1,
-    firstName: "First Name",
-    lastName: "Last Name",
-    email: "asd@asd.com"
+    id: 0,
+    firstName: "placeholder",
+    lastName: "placeholder",
+    email: "placeholder@placeholder.com"
 }];
 
+// Updates the tbody of table with rows
 function updateTable() {
     tbody.innerHTML = persons.map(function (p) {
         return "<tr><td>" +
@@ -72,6 +78,7 @@ function updateTable() {
     }
 }
 
+// '↻' button
 function refreshHandler() {
     log("refreshHandler on url: " + url("person"));
 
@@ -92,6 +99,7 @@ function refreshHandler() {
 }
 refresh.addEventListener('click', refreshHandler);
 
+// '+' button
 function addHandler() {
     personModalTitle.innerText = "Add Person";
     personModalTitle["x-handler"] = "Add Person";
@@ -100,6 +108,7 @@ function addHandler() {
 }
 add.addEventListener('click', addHandler);
 
+// Edit buttons
 function editHandler(evt) {
     personModalTitle.innerText = "Edit Person";
     personModalTitle["x-handler"] = "Edit Person";
@@ -112,6 +121,7 @@ function editHandler(evt) {
     $('#firstName').focus();
 }
 
+// When modal is saved.
 function saveHandler(evt) {
     var p = {};
     var conf = postConf;
@@ -142,6 +152,7 @@ var json = JSON.stringify(p);
 }
 save.addEventListener('click', saveHandler);
 
+// Bootstrap related, this is done when the modal is closed.
 $("#person-modal").on('hidden.bs.modal', function (e) {
     personModalTitle["x-handler"] = "";
     personForm.id.value = "";
@@ -182,3 +193,6 @@ function findPerson(id) {
 function log(message) {
     if(debug) console.log(message);
 }
+
+// Load persons
+refreshHandler();
