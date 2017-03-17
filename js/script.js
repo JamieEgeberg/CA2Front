@@ -1,5 +1,4 @@
 
-
 var port = 8080;
 var domain = "http://localhost";
 var basePath = "/api";
@@ -54,9 +53,8 @@ function updateTable() {
         del[i].addEventListener("click", delHandler);
         //edit[i].addEventListener("click", editHandler);
     }
-}
-;
-refresh.addEventListener('click', updateTable());
+};
+refresh.addEventListener('click', updateTable);
 
 function delHandler(evt) {
     var delbody = parseInt(evt.target.value);
@@ -76,5 +74,4 @@ function delHandler(evt) {
             updateTable();
         }
     });
-}
-;
+};
