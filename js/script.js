@@ -35,15 +35,17 @@ var persons = [{
 function updateTable() {
     tbody.innerHTML = persons.map(function (p) {
         return "<tr><td>" +
-            p.id +
-            "</td><td>" +
-            p.email +
-            "</td><td>" +
-            p.firstName +
-            "</td><td>" +
-            p.lastName +
-            "</td><td>" +
-            // Buttons?
-            "</td></tr>"
+                p.id +
+                "</td><td>" +
+                p.email +
+                "</td><td>" +
+                p.firstName +
+                "</td><td>" +
+                p.lastName +
+                "</td><td>" +
+                "<button class= 'btn btn-warning edit' value=" + p.id + ">edit</button> " +
+                "<button class= 'btn btn-danger delete' value=" + p.id + ">delete</button>" +
+                "</td></tr>";
     }).join("\n");
 };
+refresh.addEventListener('click', updateTable());
