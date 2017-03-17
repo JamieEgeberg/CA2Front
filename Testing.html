@@ -15,31 +15,36 @@
             <h3>JUnit facade test</h3>
 			<p>All methods in the three implemented facades have been tested using JUnit. 
             In order to utilize a separate database for tests, an extra persistence unit was added to persistence.xml, this PU referred to 
-			a test-database. This means that any test data added, changed or removed during testing will not be added to the production database.
-		    We have chosen not to use Mocking, because......................................
+			an in-memory database used for testing. This means that any test data added, changed or removed during testing will not be added to the production database.
+		    <br>
+			We have chosen not to use mocking, because we test against the in-memory database instead.
 			<br>
 			In the setUp() of each test an EntityManagerFactory is made from the testPU and an intance of the facade under test is instatiated 
 			and both are saved in global variables, in order to access them in all subsequent test methods. 
 			Then a method from Util is used to fill data in the database. <br>
-			Each test uses the addEntityManagerFactory() method to add the emf to the facade instance, so that it utilizes the test database.
+			Each test uses the addEntityManagerFactory(emf) method to add the emf to the facade instance, so that it utilizes the test database.
 			<br>
 			An example of a JUnit test:
-			<pre><code>	
-			public void testGetPerson_long() {
-        System.out.println("getPerson");
-        instance.addEntityManagerFactory(emf);
-        long id = 1L;
-        Person result = null;
-        try {
-            result = instance.getPerson(id);
-        } catch (TheException ex) {
-            fail(ex.getMessage());
-        }
-        assertNotNull(result);
-        assertTrue(id == result.getId());
-    }</code></pre>
-	This test 
-	</p>
+			<pre><code>	public void testGetPerson_long() {
+		System.out.println("getPerson");
+		instance.addEntityManagerFactory(emf);
+		long id = 1L;
+		Person result = null;
+		try {
+			result = instance.getPerson(id);
+		} catch (TheException ex) {
+			fail(ex.getMessage());
+		}
+		assertNotNull(result);
+		assertTrue(id == result.getId());
+		}</code></pre>
+			This test checks that the getPerson(id) method returns the person object with the correct id. 
+			If an error occurs in the facade it will throw a TheException, which will then be caught and cause the test to fail.
+			However if a Person is returned from the facade it will be stored in 'result', 
+			and the id stored in result is then checked agianst the expected id, and if they match the test has succeded.
+			<br>
+			The following is a screenshot of all the tests from PersonFacadeTest succeeding:
+			</p>
 			
 			<img src="testResults.PNG">
 		   
