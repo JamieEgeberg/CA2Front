@@ -1,52 +1,48 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <title>Description of API, errors and JSON</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-        crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+              crossorigin="anonymous">
     </head>
     <body>
 
         <div class="col-sm-10">
             <h1>Description of API, errors and JSON</h1>
-			
-			The REST API schema with errorhandling for person is shown here. Company follows the same template and is therefore not pictured here.
-           
+
+            The REST API schema with errorhandling for person is shown here. Company follows the same template and is therefore not pictured here.
+
             <h3>PERSON REST API schema</h3>
 
             <table class="table table-striped">
-			<thead class="table-inverse">
-<tr>	<th>Path	</th><th>Normal operation</th><th>	Errorhandling</th>
-</tr></thead>
-<tbody >
-<tr><th colspan="3">GET		</th>
-</tr><tr><td>api/person/</td><td>	Return all Persons, with all details, as a JSON object</td><td> 	500, "No persons found"</td>
-</tr><tr><td>api/person/{id}</td><td>	Return the Person (with the given id) with all details as a JSON object </td><td>	500, "Person with id: {id} not found."</td>
-		
-</tr><tr><td>api/person/contactinfo </td><td>	Return all Persons, with only contact info, as a JSON object</td><td>	500, "No persons found"</td>
-</tr><tr><td>api/person/contactinfo/{id} </td><td>	Return the Person (with the given id) with only contact info, as a JSON object	</td><td>500, "Person with id: {id} not found."</td>
-		
-</tr><tr><th colspan="3">POST	</th>	
-</tr><tr><td>api/person </td><td>	Create a new Person given a JSON object</td><td>		500, "Persist failed rollback, object: {postObject}"</td>
-		
-</tr><tr><th colspan="3">PUT		</th>
-</tr><tr><td>api/person 	</td><td>Update existing Person given a JSON object</td><td>	500, "Merge failed rollback, object: {putObject}"</td>
-		
-</tr><tr><<th colspan="3">DELETE	</th>	
-</tr><tr><td>api/person/{id}	</td><td>Delete an existing Person given an id	</td><td>	500, "Could not delete. Rollback, object: {toDeleteObject}/null"</td>
-	</tr>
-</tbody></table>	
-		
-<h3>JSON format</h3>
-Here is an example of the JSON format for a Person, with 2 hobbies, 2 phones, and an address.
-<pre><code>	{
+                <thead class="table-inverse">
+                    <tr>	<th>Path	</th><th>Normal operation</th><th>	Errorhandling</th>
+                    </tr></thead>
+                <tbody >
+                    <tr><th colspan="3">GET		</th>
+                    </tr><tr><td>api/person/</td><td>	Return all Persons, with all details, as a JSON object</td><td> 	500, "No persons found"</td>
+                    </tr><tr><td>api/person/{id}</td><td>	Return the Person (with the given id) with all details as a JSON object </td><td>	500, "Person with id: {id} not found."</td>
+
+                    </tr><tr><td>api/person/contactinfo </td><td>	Return all Persons, with only contact info, as a JSON object</td><td>	500, "No persons found"</td>
+                    </tr><tr><td>api/person/contactinfo/{id} </td><td>	Return the Person (with the given id) with only contact info, as a JSON object	</td><td>500, "Person with id: {id} not found."</td>
+
+                    </tr><tr><th colspan="3">POST	</th>	
+                    </tr><tr><td>api/person </td><td>	Create a new Person given a JSON object</td><td>		500, "Persist failed rollback, object: {postObject}"</td>
+
+                    </tr><tr><th colspan="3">PUT		</th>
+                    </tr><tr><td>api/person 	</td><td>Update existing Person given a JSON object</td><td>	500, "Merge failed rollback, object: {putObject}"</td>
+
+                    </tr><tr><<th colspan="3">DELETE	</th>	
+                    </tr><tr><td>api/person/{id}	</td><td>Delete an existing Person given an id	</td><td>	500, "Could not delete. Rollback, object: {toDeleteObject}/null"</td>
+                    </tr>
+                </tbody></table>	
+
+            <h3>JSON format</h3>
+            Here is an example of the JSON format for a Person, with 2 hobbies, 2 phones, and an address.
+            <pre><code>	{
 	"firstName": "Berit",
 	"lastName": "Brandt",
 	"hobbies": [{

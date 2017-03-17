@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Testing</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+              crossorigin="anonymous">
+    </head>
+    <body>
+
+        <div class="col-sm-10">
+            <h1>Testing</h1>
+            <h3>JUnit facade test</h3>
+			<p>All methods in the three implemented facades have been tested using JUnit. 
+            In order to utilize a separate database for tests, an extra persistence unit was added to persistence.xml, this PU referred to 
+			a test-database. This means that any test data added, changed or removed during testing will not be added to the production database.
+		    We have chosen not to use Mocking, because......................................
+			<br>
+			In the setUp() of each test an EntityManagerFactory is made from the testPU and an intance of the facade under test is instatiated 
+			and both are saved in global variables, in order to access them in all subsequent test methods. 
+			Then a method from Util is used to fill data in the database. <br>
+			Each test uses the addEntityManagerFactory() method to add the emf to the facade instance, so that it utilizes the test database.
+			<br>
+			An example of a JUnit test:
+			<pre><code>	
+			public void testGetPerson_long() {
+        System.out.println("getPerson");
+        instance.addEntityManagerFactory(emf);
+        long id = 1L;
+        Person result = null;
+        try {
+            result = instance.getPerson(id);
+        } catch (TheException ex) {
+            fail(ex.getMessage());
+        }
+        assertNotNull(result);
+        assertTrue(id == result.getId());
+    }</code></pre>
+	This test 
+	</p>
+			
+			<img src="testResults.PNG">
+		   
+            <h3>Resource Integration Test</h3>
+			
+            
+
+			
+
+            <h3><a href="Documentation.html">Back</a></h3>
+        </div>
+    </body>
+</html>
