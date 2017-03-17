@@ -58,7 +58,7 @@ refresh.addEventListener('click', updateTable);
 
 function delHandler(evt) {
     var delbody = parseInt(evt.target.value);
-    var delpromise = fetch(url("person") + "/" + delbody, confDel);
+    var delpromise = fetch(url("person") + "/" + delbody, deleteConf);
     delpromise.then(function (response) {
         return response.statusCode();
     }).then(function (status) {
