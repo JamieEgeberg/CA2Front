@@ -83,13 +83,32 @@ function delHandler(evt) {
         if (status) {
             //Display error message and break.... alert("FEJL!!!");
         } else {
-            for (var i = 0; i < persons.length; i++) {
-                if (persons[i].id === delbody) {
-                    persons.splice(i, 1);
-                    break;
-                }
-            }
+            removePerson(id);
             updateTable();
         }
     });
+}
+
+function removePerson(id) {
+    var i = findIndex(id);
+    var person = persons[i];
+    persons.splice(i, 1);
+    return person;
+}
+
+function editPerson(person) {
+    persons[findIndex(person.id)] = person;
+    return person;
+}
+
+function findPerson(id) {
+    return persons[findIndex(id)];
+}
+
+function findIndex(id) {
+    var i = 0;
+    for (; i < persons.length; i++)
+        if (persons[i].id === id) break;
+
+    return i;
 }
