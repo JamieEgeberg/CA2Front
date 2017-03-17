@@ -1,4 +1,15 @@
 
+
+var port = 8080;
+var domain = "http://localhost";
+var basePath = "/api";
+
+function url(path) {
+    if (!path.startsWith("/"))
+        path = "/" + path;
+    return domain + ":" + port + basePath + path;
+};
+
 var headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
