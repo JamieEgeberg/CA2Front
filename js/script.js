@@ -8,7 +8,8 @@ function url(path) {
     if (!path.startsWith("/"))
         path = "/" + path;
     return domain + ":" + port + basePath + path;
-};
+}
+;
 
 var headers = {
     'Access-Control-Allow-Origin': '*',
@@ -17,20 +18,20 @@ var headers = {
     'Accept': 'application/json'
 };
 
-var getConf = { method: 'GET', header: headers };
-var postConf = { method: 'POST', header: headers };
-var putConf = { method: 'PUT', header: headers };
-var deleteConf = { method: 'DELETE', header: headers };
+var getConf = {method: 'GET', header: headers};
+var postConf = {method: 'POST', header: headers};
+var putConf = {method: 'PUT', header: headers};
+var deleteConf = {method: 'DELETE', header: headers};
 
 var tbody = document.getElementById("tbody");
 var refresh = document.getElementById("refresh");
 
 var persons = [{
-    id: 1,
-    email: "asd@asd.com",
-    firstName: "First Name",
-    lastName: "Last Name"
-}];
+        id: 1,
+        email: "asd@asd.com",
+        firstName: "First Name",
+        lastName: "Last Name"
+    }];
 
 function updateTable() {
     tbody.innerHTML = persons.map(function (p) {
@@ -47,5 +48,33 @@ function updateTable() {
                 "<button class= 'btn btn-danger delete' value=" + p.id + ">delete</button>" +
                 "</td></tr>";
     }).join("\n");
-};
+    var del = document.getElementsByClassName("delete");
+    var edit = document.getElementsByClassName("edit");
+    for (var i = 0; i < del.length; i++) {
+        del[i].addEventListener("click", delHandler);
+        //edit[i].addEventListener("click", editHandler);
+    }
+}
+;
 refresh.addEventListener('click', updateTable());
+
+function delHandler(evt) {
+    var delbody = parseInt(evt.target.value);
+    var delpromise = fetch(url("person") + "/" + delbody, confDel);
+    delpromise.then(function (response) {
+        return response.statusCode();
+    }).then(function (status) {
+        if (status != 200) {
+            //Display error message and break.... alert("FEJL!!!");
+        } else {
+            for (var i = 0; i < persons.length; i++) {
+                if (persons[i].id === delbody) {
+                    persons.splice(i, 1);
+                    break;
+                }
+            }
+            updateTable();
+        }
+    });
+}
+;
