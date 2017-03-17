@@ -31,15 +31,15 @@ var putConf = { method: 'PUT', headers: myHeaders, mode: "cors" };
 var deleteConf = { method: 'DELETE', headers: myHeaders, mode: "cors" };
 
 var tbody = document.getElementById("tbody"); // table body
-// Input fields not actually inside a form just simplifies it by grouping them.
-var personForm = {
+var modal = $("#person-modal"); // JQuery required for Bootstrap modals
+var modalTitle = document.getElementById("person-modal-title");
+// simplifies inputfields by grouping them together
+var modalForm = {
     id: document.getElementById("id"),
     firstName: document.getElementById("firstName"),
     lastName: document.getElementById("lastName"),
     email: document.getElementById("email")
-}
-var personModal = $("#person-modal"); // JQuery required for Bootstrap modals
-var personModalTitle = document.getElementById("person-modal-title");
+};
 var save = document.getElementById("save"); // Save Changes button
 var add = document.getElementById("add"); // '+' button
 var refresh = document.getElementById("refresh"); // '↻' button
@@ -72,6 +72,11 @@ function updateTable() {
     }).join("\n");
     var del = document.getElementsByClassName("delete");
     var edit = document.getElementsByClassName("edit");
+    /* 
+    this should be a safe for loop
+    since the amount of delete and edit 
+    buttons should be the same 
+    */
     for (var i = 0; i < del.length; i++) {
         del[i].addEventListener("click", delHandler);
         edit[i].addEventListener("click", editHandler);
@@ -101,8 +106,8 @@ refresh.addEventListener('click', refreshHandler);
 
 // '+' button
 function addHandler() {
-    personModalTitle.innerText = "Add Person";
-    personModalTitle["x-handler"] = "Add Person";
+    modalTitle.innerText = "Add Person";
+    modalTitle["x-handler"] = "Add Person";
     $('#person-modal').modal('show');
     $('#firstName').focus();
 }
@@ -110,13 +115,13 @@ add.addEventListener('click', addHandler);
 
 // Edit buttons
 function editHandler(evt) {
-    personModalTitle.innerText = "Edit Person";
-    personModalTitle["x-handler"] = "Edit Person";
+    modalTitle.innerText = "Edit Person";
+    modalTitle["x-handler"] = "Edit Person";
     var p = findPerson(evt.target.value);
-    personForm.id.value = p.id;
-    personForm.firstName.value = p.firstName;
-    personForm.lastName.value = p.lastName;
-    personForm.email.value = p.email;
+    modalForm.id.value = p.id;
+    modalForm.firstName.value = p.firstName;
+    modalForm.lastName.value = p.lastName;
+    modalForm.email.value = p.email;
     $('#person-modal').modal('show');
     $('#firstName').focus();
 }
@@ -125,18 +130,18 @@ function editHandler(evt) {
 function saveHandler(evt) {
     var p = {};
     var conf = postConf;
-    if (personModalTitle["x-handler"] === "Edit Person") {
+    if (modalTitle["x-handler"] === "Edit Person") {
         conf = putConf;
-        p.id = personForm.id.value;
-    } else if (personModalTitle["x-handler"] !== "Add Person") {
+        p.id = modalForm.id.value;
+    } else if (modalTitle["x-handler"] !== "Add Person") {
         log("Fail: some how you tried to save the modal without it being opened correctly!");
         return;
     }
-    p.firstName = personForm.firstName.value;
-    p.lastName = personForm.lastName.value;
-    p.email = personForm.email.value;
+    p.firstName = modalForm.firstName.value;
+    p.lastName = modalForm.lastName.value;
+    p.email = modalForm.email.value;
 
-var json = JSON.stringify(p);
+    var json = JSON.stringify(p);
     conf.body = json;
     conf.headers["Content-Length"] = json.length;
 
@@ -146,7 +151,7 @@ var json = JSON.stringify(p);
         refreshHandler();
         $('#person-modal').modal('hide');
     }).catch(function () {
-        personModalTitle.innerText = personModalTitle["x-handler"] + ", failed to save";
+        modalTitle.innerText = modalTitle["x-handler"] + ", failed to save";
         log("Fail: couldn't save");
     });
 }
@@ -154,13 +159,14 @@ save.addEventListener('click', saveHandler);
 
 // Bootstrap related, this is done when the modal is closed.
 $("#person-modal").on('hidden.bs.modal', function (e) {
-    personModalTitle["x-handler"] = "";
-    personForm.id.value = "";
-    personForm.firstName.value = "";
-    personForm.lastName.value = "";
-    personForm.email.value = "";
+    modalTitle["x-handler"] = "";
+    modalForm.id.value = "";
+    modalForm.firstName.value = "";
+    modalForm.lastName.value = "";
+    modalForm.email.value = "";
 });
 
+// Delete Buttons
 function delHandler(evt) {
     var id = parseInt(evt.target.value);
     var delpromise = fetch(url("person") + "/" + id, deleteConf);
@@ -176,6 +182,7 @@ function delHandler(evt) {
     });
 }
 
+// Remove person in persons
 function removePerson(id) {
     var i = 0;
     for (; i < persons.length; i++) if (persons[i].id === id) break;
@@ -184,15 +191,17 @@ function removePerson(id) {
     return person;
 }
 
+// Find person by id in persons
 function findPerson(id) {
     return persons.find(function (person) {
         return person.id == id;
     });
 }
 
+// Log to console if debug var in the top of document is set to true.
 function log(message) {
-    if(debug) console.log(message);
+    if (debug) console.log(message);
 }
 
-// Load persons
+// Initial load of persons
 refreshHandler();
