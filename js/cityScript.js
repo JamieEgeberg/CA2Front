@@ -1,6 +1,6 @@
 
 var port = 8080;
-var domain = "http://localhost";
+var domain = "https://ca2.skaarup.io";
 var basePath = "/api";
 var debug = true;
 
@@ -8,7 +8,7 @@ var debug = true;
 function url(path) {
     if (!path.startsWith("/"))
         path = "/" + path;
-    return domain + ":" + port + basePath + path;
+    return domain + basePath + path;
 }
 
 // not used
