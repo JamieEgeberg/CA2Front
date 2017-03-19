@@ -14,7 +14,9 @@
 
 <body>
     <div class="container">
-        <a href="index.html"><h3>Home</h3></a>
+        <a href="index.html">
+            <h3>Home</h3>
+        </a>
     </div>
     <div class="container">
         <div id="app">
@@ -31,11 +33,8 @@
                         <th>Market value</th>
                         <th width="110">
                             <div class="btn-group">
-                                <button id="add" type="button" 
-                                class="btn btn-primary btn-sm">+</button>
-                                <button id="refresh" type="button" 
-                                class="btn btn-info btn-sm" 
-                                x-unicode="&#8635;">↻</button>
+                                <button id="add" type="button" class="btn btn-primary btn-sm">+</button>
+                                <button id="refresh" type="button" class="btn btn-info btn-sm" x-unicode="&#8635;">↻</button>
                             </div>
                         </th>
                     </tr>
@@ -45,7 +44,7 @@
                 </tbody>
             </table>
         </div>
-        
+
     </div>
 
 
@@ -60,41 +59,41 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" id="id" name="id" value="0"/>
+                    <input type="hidden" id="id" name="id" value="0" />
                     <div class="form-group row">
                         <label for="name" class="col-3 col-form-label">Name</label>
                         <div class="col-9">
-                            <input class="form-control" type="text" id="name" placeholder="Name"/>
+                            <input class="form-control" type="text" id="name" placeholder="Name" />
                         </div>
-                    </div>                    
+                    </div>
                     <div class="form-group row">
                         <label for="email" class="col-3 col-form-label">Email</label>
                         <div class="col-9">
-                            <input class="form-control" type="email" id="email" placeholder="email@example.com"/>
+                            <input class="form-control" type="email" id="email" placeholder="email@example.com" />
                         </div>
                     </div>
-					<div class="form-group row">
+                    <div class="form-group row">
                         <label for="description" class="col-3 col-form-label">Description</label>
                         <div class="col-9">
                             <textarea class="form-control" type="text" id="description" placeholder="Description"></textarea>
                         </div>
                     </div>
-					<div class="form-group row">
+                    <div class="form-group row">
                         <label for="cvr" class="col-3 col-form-label">CVR</label>
                         <div class="col-9">
-                            <input class="form-control" type="text" id="cvr" placeholder="CVR"/>
+                            <input class="form-control" type="text" id="cvr" placeholder="CVR" />
                         </div>
                     </div>
-					<div class="form-group row">
+                    <div class="form-group row">
                         <label for="noOfEmployees" class="col-3 col-form-label">Number of employees</label>
                         <div class="col-9">
-                            <input class="form-control" type="number" id="noOfEmployees" placeholder="Number of employees"/>
+                            <input class="form-control" type="number" id="noOfEmployees" placeholder="Number of employees" />
                         </div>
                     </div>
-					<div class="form-group row">
+                    <div class="form-group row">
                         <label for="marketValue" class="col-3 col-form-label">Market value</label>
                         <div class="col-9">
-                            <input class="form-control" type="number" id="marketValue" placeholder="Market value"/>
+                            <input class="form-control" type="number" id="marketValue" placeholder="Market value" />
                         </div>
                     </div>
                 </div>

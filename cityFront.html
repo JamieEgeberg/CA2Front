@@ -20,19 +20,18 @@
     </div>
     <div class="container">
         <div id="app">
-            <h3>Persons</h3>
+            <h3>Cities</h3>
             <table class="table table-bordered table-striped table-sm">
                 <thead class="thead-inverse">
                     <tr>
                         <th>Id</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
+                        <th>Zip Code</th>
+                        <th>Name</th>
                         <th width="110">
-                            <div class="btn-group">
+                            <!--<div class="btn-group">
                                 <button id="add" type="button" class="btn btn-primary btn-sm">+</button>
                                 <button id="refresh" type="button" class="btn btn-info btn-sm" x-unicode="&#8635;">↻</button>
-                            </div>
+                            </div>-->
                         </th>
                     </tr>
                 </thead>
@@ -43,11 +42,11 @@
         </div>
         <hr/>
 
-        <div class="modal fade" id="person-modal" tabindex="-1" role="dialog">
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 id="person-modal-title" class="modal-title">Modal title</h5>
+                        <h5 id="modal-title" class="modal-title">Modal title</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -55,21 +54,15 @@
                     <div class="modal-body">
                         <input type="hidden" id="id" name="id" value="0" />
                         <div class="form-group row">
-                            <label for="firstName" class="col-3 col-form-label">First Name</label>
+                            <label for="zipCode" class="col-3 col-form-label">Zip Code</label>
                             <div class="col-9">
-                                <input class="form-control" type="text" id="firstName" placeholder="First Name" />
+                                <input class="form-control" type="text" id="zipCode" placeholder="Zip Code" />
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lastName" class="col-3 col-form-label">Last Name</label>
+                            <label for="name" class="col-3 col-form-label">Name</label>
                             <div class="col-9">
-                                <input class="form-control" type="text" id="lastName" placeholder="Last Name" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email" class="col-3 col-form-label">Email</label>
-                            <div class="col-9">
-                                <input class="form-control" type="email" id="email" placeholder="email@example.com" />
+                                <input class="form-control" type="text" id="name" placeholder="Name" />
                             </div>
                         </div>
                     </div>
@@ -87,7 +80,7 @@
             crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
             crossorigin="anonymous"></script>
-        <script type="text/javascript" src="js/personScript.js"></script>
+        <script type="text/javascript" src="js/cityScript.js"></script>
 </body>
 
 </html>
