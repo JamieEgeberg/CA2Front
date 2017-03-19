@@ -43,6 +43,8 @@ var modalForm = {
 var save = document.getElementById("save"); // Save Changes button
 var add = document.getElementById("add"); // '+' button
 var refresh = document.getElementById("refresh"); // '↻' button
+var refreshByZipCode = document.getElementById("refreshByZipCode"); // '↻' button
+var zipcode = document.getElementById('zipCode');
 
 // have a placeholding person which is overridden
 var persons = [{
@@ -103,6 +105,29 @@ function refreshHandler() {
     });
 }
 refresh.addEventListener('click', refreshHandler);
+
+
+// '↻' button
+function refreshByZipCodeHandler() {
+    var uri = url("person/zip/" + zipcode.value);
+    log("refreshByZipCodeHandler on url: " + uri);
+
+    var status = false;
+    var promise = fetch(uri, getConf);
+
+    promise.then(function (response) {
+        status = response.ok;
+        return response.json();
+    }).then(function (json) {
+        if (status) {
+            persons = json;
+            updateTable();
+        } else {
+            // display err
+        }
+    });
+}
+refreshByZipCode.addEventListener('click', refreshByZipCodeHandler);
 
 // '+' button
 function addHandler() {
