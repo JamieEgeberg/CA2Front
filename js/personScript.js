@@ -90,7 +90,7 @@ function refreshHandler() {
     log("refreshHandler on url: " + url("person"));
 
     var status = false;
-    var promise = fetch(url("person/contactinfo"), getConf);
+    var promise = fetch(url("person"), getConf);
 
     promise.then(function (response) {
         status = response.ok;
